@@ -6,6 +6,8 @@ class Rota{
     private $destino;
     private $distancia;
     private $duracao_estimada;
+    private $horario_partida;
+    private $horario_chegada;
 
     public function __construct($origem, $destino, $distancia, $duracao_estimada) {
         $this->origem = $origem;
@@ -47,6 +49,20 @@ class Rota{
     }
     public function setDuracaoEstimada($d) {
         $this->duracao_estimada = $d;
+    }
+
+    public function getHorarioPartida(){
+        return $this->horario_partida;
+    }
+    public function setHorarioPartida($h) {
+        $this->horario_partida = $h;
+    }
+
+    public function getHorarioChegada(){
+        return $this->horario_chegada;
+    }
+    public function setHorarioChegada($h) {
+        $this->horario_chegada = $h;
     }
 }
 

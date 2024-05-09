@@ -46,6 +46,21 @@ class MotoristaDAO{
 
         $stmt->execute();
     }
+
+    public function atribuirOnibus($onibus_id, $motorista_id){
+        $sql = 'UPDATE onibus SET motorista_id = ? WHERE onibus_id = ?';
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $motorista_id);
+        $stmt->bindValue(2, $onibus_id);
+        $stmt->execute();
+    }
+
+    public function desatribuirOnibus($onibus_id){
+        $sql = 'UPDATE onibus SET motorista_id = NULL WHERE onibus_id = ?';
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $onibus_id);
+        $stmt->execute();
+    }
 }
 
 ?>

@@ -46,6 +46,22 @@ class RotaDAO{
 
         $stmt->execute();
     }
+
+    public function iniciarCorrida($rota_id, $horario_partida){
+        $sql = 'UPDATE rota SET horario_partida = ? WHERE rota_id = ?';
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $horario_partida);
+        $stmt->bindValue(2, $rota_id);
+        $stmt->execute();
+    }
+
+    public function finalizarCorrida($rota_id, $horario_chegada){
+        $sql = 'UPDATE rota SET horario_chegada = ? WHERE rota_id = ?';
+        $stmt = Conexao::getConn()->prepare($sql);
+        $stmt->bindValue(1, $horario_chegada);
+        $stmt->bindValue(2, $rota_id);
+        $stmt->execute();
+    }
 }
 
 ?>

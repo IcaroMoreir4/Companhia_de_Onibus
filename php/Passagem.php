@@ -14,6 +14,16 @@ class Passagem{
         $this->preco = $preco;
     }
 
+    public function ComprarPassagem(){
+        $passagemDAO = new PassagemDAO();
+        $passagemDAO->create($this);
+    }
+
+    public function DevolverPassagem(){
+        $passagemDAO = new PassagemDAO();
+        $passagemDAO->delete($this->passagem_id);
+    }
+
     public function getPassagemID(){
         return $this->passagem_id;
     }

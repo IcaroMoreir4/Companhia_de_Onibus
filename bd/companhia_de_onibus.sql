@@ -48,6 +48,10 @@ CREATE TABLE `onibus` (
   `placa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+ALTER TABLE onibus
+ADD COLUMN motorista_id INT(11),
+ADD FOREIGN KEY (motorista_id) REFERENCES motorista(motorista_id);
+
 -- --------------------------------------------------------
 
 --
@@ -72,8 +76,12 @@ CREATE TABLE `passagem` (
   `passageiro_id` int(11) NOT NULL,
   `rota_id` int(11) NOT NULL,
   `data_viagem` date NOT NULL,
-  `preco` float NOT NULL
+  `preco` float NOT NULL,
+  `devolvida` TINYINT(1) NOT NULL DEFAULT 0,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE passagem 
+ADD COLUMN devolvida TINYINT(1) DEFAULT 0;
 
 -- --------------------------------------------------------
 
@@ -86,7 +94,9 @@ CREATE TABLE `rota` (
   `origem` varchar(100) NOT NULL,
   `destino` varchar(100) NOT NULL,
   `distancia` float NOT NULL,
-  `duracao_estimada` time NOT NULL
+  `duracao_estimada` time NOT NULL,
+  `horario_partida` datetime DEFAULT NULL,
+  `horario_chegada` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
